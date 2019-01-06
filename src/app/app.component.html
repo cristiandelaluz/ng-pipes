@@ -1,20 +1,140 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<div class="container p-5">
+    <h1>Pipes</h1>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Variable</th>
+                <th scope="col">Pipe</th>
+                <th scope="col">Resultado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ name }}</td>
+                <td>uppercase</td>
+                <td>{{ name | uppercase }}</td>
+            </tr>
+            <tr>
+                <td>{{ name }}</td>
+                <td>lowercase</td>
+                <td>{{ name | lowercase }}</td>
+            </tr>
+            <tr>
+                <td>{{ name }}</td>
+                <td>slice: 4</td>
+                <td>{{ name | slice:4 }}</td>
+            </tr>
+            <tr>
+                <td>{{ name }}</td>
+                <td>slice:0:4</td>
+                <td>{{ name | slice:0:4 }}</td>
+            </tr>
+            <tr>
+                <td>{{ numArr }}</td>
+                <td>slice:1:5</td>
+                <td>{{ numArr | slice:1:5 }}</td>
+            </tr>
+            <tr>
+                <td>{{ pi }}</td>
+                <td>number:'3.0-0'</td>
+                <td>{{ pi | number:'3.0-0' }}</td>
+            </tr>
+            <tr>
+                <td>{{ pi }}</td>
+                <td>number:'1.0-2'</td>
+                <td>{{ pi | number:'1.0-2' }}</td>
+            </tr>
+            <tr>
+                <td>{{ a }}</td>
+                <td>percent</td>
+                <td>{{ a | percent }}</td>
+            </tr>
+            <tr>
+                <td>{{ a }}</td>
+                <td>percent:'2.2-2'</td>
+                <td>{{ a | percent:'2.2-2' }}</td>
+            </tr>
+            <tr>
+                <td>{{ b }}</td>
+                <td>currency</td>
+                <td>{{ b | currency }}</td>
+            </tr>
+            <tr>
+                <td>{{ b }}</td>
+                <td>currency:'EUR'</td>
+                <td>{{ b | currency:'EUR' }}</td>
+            </tr>
+            <tr>
+                <td>{{ b }}</td>
+                <td>currency:'EUR':'code'</td>
+                <td>{{ b | currency:'EUR':'code' }}</td>
+            </tr>
+            <tr>
+                <td>{{ b }}</td>
+                <td>currency:'MX':'symbol':'4.0-0'</td>
+                <td>{{ b | currency:'MX':'symbol':'4.0-0' }}</td>
+            </tr>
+            <tr>
+                <td>{{ b }}</td>
+                <td>number:'.2-2'</td>
+                <td>{{ b | number:'.2-2' }}</td>
+            </tr>
+            <tr>
+                <td>{{ promiseValue }}</td>
+                <td>async</td>
+                <td>{{ promiseValue | async }}</td>
+            </tr>
+            <tr>
+                <td>{{ date }}</td>
+                <td>date</td>
+                <td>{{ date | date }}</td>
+            </tr>
+            <tr>
+                <td>{{ date }}</td>
+                <td>date:'medium'</td>
+                <td>{{ date | date:'medium' }}</td>
+            </tr>
+            <tr>
+                <td>{{ date }}</td>
+                <td>date:'MMMM - dd'</td>
+                <td>{{ date | date:'MMMM - dd' }}</td>
+            </tr>
+            <tr>
+                <td>{{ fullName }}</td>
+                <td>capitalize</td>
+                <td>{{ fullName | capitalize }}</td>
+            </tr>
+            <tr>
+                <td>{{ fullName }}</td>
+                <td>capitalize:false</td>
+                <td>{{ fullName | capitalize:false }}</td>
+            </tr>
+            <tr>
+                <td>{{ name }}</td>
+                <td>encrypt:{{ isCrypted }} <button (click)="isCrypted = !isCrypted" class="btn btn-outline-danger">Mostrar / Ocultar</button></td>
+                <td>{{ name | encrypt:isCrypted }}</td>
+            </tr>
+        </tbody>
+    </table>
 
+    <div class="row">
+        <div class="col-md-4">
+            <h4>Slice</h4>
+            <ul>
+                <li *ngFor="let item of numArr | slice:5:20">{{ item }}</li>
+            </ul>
+        </div>
+
+        <div class="col-md-4">
+            <h4>JSON</h4>
+            <pre>{{ ninja | json }}</pre>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <h4>YouTube <small>Dynamic Video</small></h4>
+            <iframe width="640" height="480" [src]="video | safedom:'https://www.youtube.com/embed/'" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+    </div>
+</div>
